@@ -68,7 +68,9 @@ body {
 }
 /*----TYPOGRAPHY----*/
 
-
+h1,h2,h3,h4{
+  font-weight: normal;
+}
 .tiny-text{
   font-size:var(--text-tiny);
   font-family: 'orpheus';
@@ -209,4 +211,36 @@ body::-webkit-scrollbar-thumb:vertical {
 .plant:nth-child(even){
   position:relative;
   bottom: var(--space);
+}
+.plant-modal{
+  display: flex;
+  position: fixed;
+  z-index: 8;
+  top:0;
+  left:0;
+  padding: var(--space);
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.9);
+  animation: fadeIn 1s forwards;
+}
+.plant-modal .inner{
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  align-items: center;
+  justify-content: center;
+  max-height: calc(100vh - (var(--space) * 2));
+  max-width: 550px;
+}
+.plant-modal .inner img{
+  max-width: 300px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
