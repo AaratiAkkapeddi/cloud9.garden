@@ -1,3 +1,21 @@
+
+This is based on the [original codebase](https://github.com/melaniehoff/rose-memorial) and is a sort of 2.0 version to do some critical updates. 
+
+# The [CLOUD9 Memorial Garden](https://cloud9.garden) is a space for collective remembrance with care, gentleness and respect. Pandemic times limit how we can gather to mourn and remember. During periods of mass loss and isolation, creating intentional spaces to enact and celebrate collective memory is vital. Our community continues to plant new seeds for all of ours that we have lost in this time, due to state violence, due to Covid and due to the continued systems centered on harming Black people, Indigenous people, brown people, low income people, trans people, undocumented people, and marginalized people. We invite you to transform personal grief into collective healing, growth and liberation.
+# ❃ ❊ ❋ ✣ ✤
+# The CLOUD9 Memorial Garden is a continuation and extension of [CLOUD9 (Collective Love on Ur Desktop)](https://cloud9.support), a platform for sharing care, strategies, wisdom, sweetness, resources, and love to support everyone affected by the coronavirus pandemic. This garden was built by and is tended to by Aarati Akkapeddi, Zainab Aliyu, Melanie Hoff and Chiara Marcial Martínez in collaboration with BUFU (By Us For Us).
+# ✽ ✾ ✿ ❀ ❁
+# Flowers made with [p5.js](https://p5js.org/). Each flower is unique to its dedication.  
+----------------
+
+## Our Stack
+- Next.js
+- Deployment: Vercel
+- Data: Airtable
+- Cloudinary (to temporary store flowers images to then upload to airtable)
+
+----------------
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

@@ -2,32 +2,211 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: 'Canela Web';
+  src: url('./fonts/CanelaWeb-Thin.woff2') format('woff2'),
+      url('./fonts/CanelaWeb-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@font-face {
+  font-family: 'Canela Web';
+  src: url('./fonts/CanelaWeb-Regular.woff2') format('woff2'),
+      url('./fonts/CanelaWeb-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
+
+@font-face {
+  font-family: 'orpheus';
+  src: url('./fonts/orpheuspro-light-webfont.woff2') format('woff2'),
+       url('./fonts/orpheuspro-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'orpheus bold';
+  src: url('./fonts/orpheuspro-bold-webfont.woff2') format('woff2'),
+       url('./fonts/orpheuspro-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --color-primary: #ffedcd;
+  --color-background: black;
+  --color-secondary: #ffedcd;
+  --color-link: #fff;
+  --text-tiny: 1vw;
+  --text-small: 1.2vw;
+  --text-medium: 1.7vw;
+  --text-large: 2.8vw;
+  --space: 50px;
+}
+
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--color-primary);
+  background: var(--color-background);
+  scrollbar-color: var(--color-background) var(--color-background); 
+  scrollbar-width: thin;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+
+#bg{
+  position: fixed;
+  z-index: -1;
+  width: 100vw;
+}
+/*----TYPOGRAPHY----*/
+
+
+.tiny-text{
+  font-size:var(--text-tiny);
+  font-family: 'orpheus';
+  font-weight: bold;
+  text-shadow: 0px 2px #000;
+  /* letter-spacing: 0.5px; */
+  letter-spacing: 0px;
+}
+
+.small-text{
+  font-size:var(--text-small);
+  font-family: 'orpheus';
+  font-weight: bold;
+  text-shadow: 0px 2px #000;
+  letter-spacing: 0px;
+}
+.medium-text{
+  font-family: 'orpheus';
+  font-weight: bold;
+  font-size: var(--text-medium);
+  text-shadow: 0px 2px #000;
+  line-height: 1.2;
+  letter-spacing: 0px;
+}
+a.medium-text, a.small-text {
+  border-bottom: 1px dotted var(--color-secondary);
+  color: var(--color-primary);
+}
+
+a.medium-text:hover {
+  border-bottom: 1px dotted var(--color-primary);
+}
+
+.medium-text-link{
+  font-family: 'Canela Web';
+  font-weight: bold;
+  font-size: var(--text-medium);
+  text-shadow: 0px 2px (var(--color-background));
+  line-height: 1.2;
+  /* letter-spacing: 0.5px; */
+  letter-spacing: 0px;
+  color: var(--color-link);
+}
+
+.medium-text-link:hover
+/* , #about-garden:hover  */
+{
+  color:var(--color-secondary);
+}
+.hidden{
+  visibility: hidden;
+}
+.large-text{
+  font-size: var(--text-large);
+  font-family: 'Canela Web';
+  font-weight: bold;
+  text-shadow: 0px 2px #000;
+}
+/**end typography**/
+
+nav a, a:visited{
+	color:var(--color-link);
+	text-decoration: none;
+	border-bottom: 1px dotted var(--color-secondary);
+}
+
+nav a, a:hover, #download-flower a:hover{
+	color: var(--color-secondary);
+	border-bottom: 1px dotted var(--color-primary);
+}
+
+a {
+	text-decoration: none;
+  color: var(--color-link);
+  word-wrap: break-word;
+}
+
+
+/* SCROLLBARS */
+body::-webkit-scrollbar {
+  background-color: var(--color-background);
+  height: 0px;
+  width: 0px;
+}
+
+body::-webkit-scrollbar-track {
+   background-color: var(--color-background);
+   height: 0px;
+   width: 0px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-background);
+  height: 0px;
+  width: 0px;
+}
+
+body::-webkit-scrollbar-track-piece  {
+    background-color: var(--color-background);
+    height: 0px;
+    width: 0px;
+}
+
+body::-webkit-scrollbar-thumb:vertical {
+    height: 0px;
+    background-color: var(--color-background);
+}
+/* intro page */
+.intro-text, .about-info{
+  display: block;
+  margin: 0 auto;
+  max-width: 570px;
+  text-align: center;
+}
+.intro-text p{
+  margin-bottom: var(--space);
+}
+
+#flower-nav{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  margin-top:var(--space)
+}
+
+/* GARDEN */
+.garden-plot{
+   display:flex;
+   width: 100vw;
+   flex-wrap:wrap;
+   gap: 10px;
+}
+
+.plant{
+  flex-basis: 15%;
+  text-align: center;
+}
+.plant:nth-child(even){
+  position:relative;
+  bottom: var(--space);
 }

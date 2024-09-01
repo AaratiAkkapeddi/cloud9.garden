@@ -1,9 +1,7 @@
-
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <>
-    <img id='bg' src={'/garden_bg.png'}/>
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <div className="intro-text medium-text">
               <p>
@@ -11,12 +9,8 @@ export default function Home() {
               </p>
   
 
-
-
-
-            <a href="./garden" id="modal-button"><span className='medium-text-link'> enter garden</span></a>
+            <button id="modal-button"><span className='medium-text-link'> enter garden</span></button>
             </div>
     </main>
-    </>
   );
 }
