@@ -4,7 +4,8 @@ const PlantFlower = dynamic(() => import('../components/share'), {
 });
 
 export default function Flower() {
+
   return (
-    <PlantFlower cloudinaryKey={process.env.REACT_APP_CLOUDINARY_KEY} secret={process.env.REACT_APP_CLOUDINARY_SECRET} />
+    <PlantFlower cloudinaryKey={process.env.REACT_APP_CLOUDINARY_KEY} auth={process.env.REACT_APP_PAT} secret={process.env.REACT_APP_CLOUDINARY_SECRET} />
   );
 }

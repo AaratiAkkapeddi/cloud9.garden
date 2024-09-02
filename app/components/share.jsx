@@ -4,7 +4,7 @@ import { NextReactP5Wrapper } from "@p5-wrapper/next";
 import { CldUploadWidget } from "next-cloudinary";
 import React, { useState } from "react";
 
-export default function PlantFlower(secret, cloudinaryKey) {
+export default function PlantFlower({secret, cloudinaryKey, auth}) {
   const [uploadImage, setUploadImage] = useState(null);
   const [uploadPlant, setUploadPlant] = useState(null);
   const [uploadDedication, setUploadDedication] = useState("");
@@ -14,9 +14,7 @@ export default function PlantFlower(secret, cloudinaryKey) {
   const [uploadLink, setUploadLink] = useState("");
   const [uploadLocation, setUploadLocation] = useState("");
 
-
-
-  const svgSubmission = () => {
+  const svgSubmission = (uploadDedication,uploadDedicationPlace,uploadDedicationThing, uploadNote,uploadImage, uploadLocation,uploadLink) => {
     let svg = document.querySelector("#defaultCanvas0").getAttribute("data-uri");
     setUploadPlant(svg)
     const fd = new FormData();
@@ -25,14 +23,47 @@ export default function PlantFlower(secret, cloudinaryKey) {
     fd.append('api_key', cloudinaryKey);
     fd.append('api_secret', secret);
     fd.append("multiple", "false");
-
+    
     fetch('https://api.cloudinary.com/v1_1/rose-memorial/upload',{
         method: 'POST',
         body: fd,
 
       }).then(response => response.json())
       .then(data => {
-            setUploadPlant(data?.secure_url);
+
+
+            let payload = {
+                    fields : {
+                            "Dedication": uploadDedication,
+                            "DedicationPlace": uploadDedicationPlace,
+                            "DedicationThing": uploadDedicationThing,
+                            "OptionalNote": uploadNote,
+                            "CloudinaryFlower": data?.secure_url,
+                            "CloudinaryPhoto": uploadImage,
+                            "OptionalLocation": uploadLocation,
+                            "OptionalLink": uploadLink,
+                            "Timestamp": Date.now()     
+                        
+                        }
+            }
+           
+
+            fetch('https://api.airtable.com/v0/appphC81blg4z9Qyf/garden', 
+                {
+                    headers: new Headers({
+                        'Authorization': 'Bearer '+ auth, 
+                        'Content-Type' : 'application/json'
+                      }),
+                    method: 'POST',
+                    body: JSON.stringify({records: [payload]}),
+                     
+               })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                })
+                .catch(error => console.error(error));
+
         })
         .catch(error => console.error(error));
       
@@ -165,7 +196,7 @@ export default function PlantFlower(secret, cloudinaryKey) {
         <br></br>
         <br></br>
         <button id="submit-button">
-          <span onClick={()=> {svgSubmission()}} className="medium-text-link"> plant flower</span>
+          <span onClick={()=> {svgSubmission(uploadDedication,uploadDedicationPlace,uploadDedicationThing, uploadNote,uploadImage, uploadLocation,uploadLink)}} className="medium-text-link"> plant flower</span>
         </button>
       </div>
     </main>

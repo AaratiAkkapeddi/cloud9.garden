@@ -16,7 +16,6 @@ export default function GardenGrid({auth}) {
       .then(response => response.json())
       .then(data => {
         setRoseData(data.records)
-        console.log(data.records)
       })
       .catch(error => console.error(error));
     }, []);

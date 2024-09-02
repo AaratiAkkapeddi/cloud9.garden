@@ -11,6 +11,9 @@ export default function Plant({id, fields}) {
         {(fields?.RoseSVG?.length > 0) &&
           <img alt="a unique white flower" src={fields.RoseSVG[0].url} />
         }
+        {(fields?.CloudinaryFlower?.length > 0) &&
+          <img alt="a unique white flower" src={fields?.CloudinaryFlower} />
+        }
         {fields?.Dedication &&
         <p className='tiny-text'>{fields?.Dedication}</p>
         }
@@ -29,6 +32,9 @@ export default function Plant({id, fields}) {
                 {(fields?.RoseSVG?.length > 0) &&
                   <img alt="a unique white flower" src={fields.RoseSVG[0].url} />
                 }
+                {(fields?.CloudinaryFlower.length > 0) &&
+                  <img alt="a unique white flower" src={fields.CloudinaryFlower} />
+                }
                 {fields?.Dedication &&
                   <h2 className='large-text'>{fields?.Dedication}</h2>
                 }
@@ -40,6 +46,10 @@ export default function Plant({id, fields}) {
                 }
                 {(fields?.OptionalPhoto?.length > 0) &&
                   <img alt="a photograph of the dedicatee" src={fields.OptionalPhoto[0].url} />
+                }
+                {(fields?.CloudinaryPhoto?.length > 0) &&
+                  <img alt="a photograph of the dedicatee" src={fields?.CloudinaryPhoto} />
+
                 }
                 {fields?.OptionalLocation &&
                   <p className="small-text"><em>{fields?.OptionalLocation}</em></p>
