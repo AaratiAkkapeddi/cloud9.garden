@@ -24,7 +24,7 @@ export default function GardenGrid({auth}) {
     <div className="garden-plot">
 
          
-            {roseData.map((rose, i) => (
+            {roseData?.map((rose, i) => (
                     <Plant key={i} id={rose.id} fields={rose.fields}/>
                 ))
             }
