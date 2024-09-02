@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
     <img id='bg' src={'/garden_bg.png'}/>
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between">
 <div className="about-info-container">
         <div className="about-info">
           <h1 className='large-text'>about this garden</h1>

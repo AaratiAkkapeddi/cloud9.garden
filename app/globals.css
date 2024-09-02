@@ -178,6 +178,9 @@ body::-webkit-scrollbar-thumb:vertical {
     height: 0px;
     background-color: var(--color-background);
 }
+main{
+  margin: var(--space);
+}
 /* intro page */
 .intro-text, .about-info{
   display: block;
@@ -196,12 +199,19 @@ body::-webkit-scrollbar-thumb:vertical {
   margin-top:var(--space)
 }
 
+.about-link{
+  position:fixed;
+  bottom:0;
+  left:0;
+  padding:calc(var(--space)/4);
+}
 /* GARDEN */
 .garden-plot{
    display:flex;
    width: 100vw;
    flex-wrap:wrap;
    gap: 10px;
+   margin-bottom: var(--space);
 }
 
 .plant{
@@ -213,6 +223,7 @@ body::-webkit-scrollbar-thumb:vertical {
   bottom: var(--space);
 }
 .plant-modal{
+  overflow: scroll;
   display: flex;
   position: fixed;
   z-index: 8;
@@ -227,20 +238,40 @@ body::-webkit-scrollbar-thumb:vertical {
   animation: fadeIn 1s forwards;
 }
 .plant-modal .inner{
-  overflow: scroll;
+  padding: var(--space);
   display: flex;
   flex-direction: column;
   gap:20px;
   align-items: center;
   justify-content: center;
-  max-height: calc(100vh - (var(--space) * 2));
   max-width: 550px;
 }
 .plant-modal .inner img{
   max-width: 300px;
 }
+.plant-modal .inner img:first-child{
+  margin-top:var(--space);
+}
 
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity: 1;}
+}
+
+/* SUBMISSION*/
+input, textarea{
+  background-color: var(--color-background);
+  border: 1px solid var(--color-secondary);
+  padding: 10px;
+  margin: 10px;
+}
+.submit-button{
+  display: block;
+  text-align: center;
+}
+textarea{
+  display: block;
+  margin: 15px auto;
+  width: 100%;
+  height: 200px;
 }

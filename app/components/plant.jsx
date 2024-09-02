@@ -26,6 +26,9 @@ export default function Plant({id, fields}) {
       {open &&
               <div className="plant-modal">
                 <div className="inner">
+                {(fields?.RoseSVG?.length > 0) &&
+                  <img alt="a unique white flower" src={fields.RoseSVG[0].url} />
+                }
                 {fields?.Dedication &&
                   <h2 className='large-text'>{fields?.Dedication}</h2>
                 }
