@@ -12,7 +12,7 @@ This is based on the [original codebase](https://github.com/melaniehoff/rose-mem
 - Next.js
 - Deployment: Vercel
 - Data: Airtable
-- Cloudinary (to temporary store flowers images to then upload to airtable)
+- Cloudinary (to store flower and optional photo images)
 
 ----------------
 
