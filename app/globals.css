@@ -238,7 +238,21 @@ main{
    gap: 10px;
    margin-bottom: var(--space);
 }
-
+#loading{
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+}
+#loading em{
+  animation: fadeIn 1s infinite alternate;
+}
 .plant{
   flex-basis: 15%;
   text-align: center;

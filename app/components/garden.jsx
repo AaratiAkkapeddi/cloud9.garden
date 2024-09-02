@@ -22,7 +22,9 @@ export default function GardenGrid({auth}) {
   
   return (
     <div className="garden-plot">
-
+        { !(roseData?.length > 0) &&
+            <div id='loading'><em className="medium-text">loading...</em></div>
+        }
          
             {roseData?.map((rose, i) => (
                     <Plant key={i} id={rose.id} fields={rose.fields}/>
