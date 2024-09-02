@@ -3,7 +3,7 @@
 export default function Home() {
   return (
     <>
-    <img id='bg' src={'/garden_bg.png'}/>
+    <div id='bg'></div>
     <main className="flex min-h-screen flex-col items-center justify-between">
             <div className="intro-text medium-text">
               <p>

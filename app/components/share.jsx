@@ -60,7 +60,9 @@ export default function PlantFlower({secret, cloudinaryKey, auth}) {
                })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
+                   window.scrollTo(0, 0);
+                   let modal = document.querySelector("#uploaded-true");
+                   modal.classList.add("open");
                 })
                 .catch(error => console.error(error));
 
@@ -199,6 +201,16 @@ export default function PlantFlower({secret, cloudinaryKey, auth}) {
           <span onClick={()=> {svgSubmission(uploadDedication,uploadDedicationPlace,uploadDedicationThing, uploadNote,uploadImage, uploadLocation,uploadLink)}} className="medium-text-link"> plant flower</span>
         </button>
       </div>
+
+      <div id='uploaded-true'>
+        <div className='inner'>
+          <p className='medium-text'>your dedication has been planted in the garden</p>
+          <br></br>
+          <div><a href="/garden" className='medium-text'>visit the garden</a></div>
+        </div>
+      </div>
+
+
     </main>
   );
 }

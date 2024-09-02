@@ -45,7 +45,15 @@
   --text-large: 2.8vw;
   --space: 50px;
 }
-
+@media(max-width: 900px){
+  :root{
+    --text-tiny: 2vh;
+    --text-small: 2vh;
+    --text-medium: 2.7vh;
+    --text-large: 2.8vh;
+    --space: 25px;
+  }
+}
 
 body {
   color: var(--color-primary);
@@ -63,8 +71,16 @@ body {
 
 #bg{
   position: fixed;
+  background-image: url("assets/garden_bg.png");
+  background-size: 100%;
   z-index: -1;
   width: 100vw;
+  height: 100vh;
+}
+@media(max-width: 900px){
+  #bg{
+    background-size: 200%;
+  }
 }
 /*----TYPOGRAPHY----*/
 
@@ -205,6 +221,15 @@ main{
   left:0;
   padding:calc(var(--space)/4);
 }
+.right-link{
+  position:fixed;
+  bottom:0;
+  right:0;
+  padding:calc(var(--space)/4);
+}
+.right-link a{
+  border-bottom: 1px dotted var(--color-secondary);
+}
 /* GARDEN */
 .garden-plot{
    display:flex;
@@ -218,6 +243,16 @@ main{
   flex-basis: 15%;
   text-align: center;
 }
+
+/* MOBILE STYLING */
+
+@media(max-width: 900px){
+  .plant{
+    flex-basis: 45%;
+    text-align: center;
+  }
+
+}
 .plant:nth-child(even){
   position:relative;
   bottom: var(--space);
@@ -230,7 +265,7 @@ main{
   top:0;
   left:0;
   padding: var(--space);
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 100vw;
   height: 100vh;
@@ -250,7 +285,7 @@ main{
   max-width: 300px;
 }
 .plant-modal .inner img:first-child{
-  margin-top:var(--space);
+  margin-top:calc(-1 * var(--space)*2);
 }
 
 @keyframes fadeIn {
@@ -265,9 +300,13 @@ input, textarea{
   padding: 10px;
   margin: 10px;
 }
-.submit-button{
-  display: block;
-  text-align: center;
+#submit-button{
+
+  margin-bottom: var(--space);
+}
+.react-p5-wrapper{
+  margin-top:calc(-1 * var(--space) * 2);
+
 }
 textarea{
   display: block;
@@ -277,4 +316,33 @@ textarea{
 }
 .cloudinary:hover{
   color: var(--color-link);
+}
+#uploaded-true{
+   display:none;
+   opacity: 0;
+   transition:1s;
+}
+#uploaded-true.open{
+  opacity: 1;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  justify-content: center;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  padding: var(--space);
+}
+#uploaded-true .inner{
+  text-align: center;
+}
+@media(max-width: 900px){
+.react-p5-wrapper{
+  max-width: calc(100vw - var(--space) * 2);
+  overflow: hidden;
+  display:flex;
+  /* align-items: center; */
+  justify-content: center;
+}
 }

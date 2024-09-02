@@ -32,7 +32,7 @@ export default function Plant({id, fields}) {
                 {(fields?.RoseSVG?.length > 0) &&
                   <img alt="a unique white flower" src={fields.RoseSVG[0].url} />
                 }
-                {(fields?.CloudinaryFlower.length > 0) &&
+                {(fields?.CloudinaryFlower?.length > 0) &&
                   <img alt="a unique white flower" src={fields.CloudinaryFlower} />
                 }
                 {fields?.Dedication &&
