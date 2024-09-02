@@ -6,7 +6,37 @@ import React, { useState } from "react";
 
 export default function PlantFlower(secret, cloudinaryKey) {
   const [uploadImage, setUploadImage] = useState(null);
+  const [uploadPlant, setUploadPlant] = useState(null);
+  const [uploadDedication, setUploadDedication] = useState("");
+  const [uploadDedicationPlace, setUploadDedicationPlace] = useState("");
+  const [uploadDedicationThing, setUploadDedicationThing] = useState("");
+  const [uploadNote, setUploadNote] = useState("");
+  const [uploadLink, setUploadLink] = useState("");
+  const [uploadLocation, setUploadLocation] = useState("");
 
+
+
+  const svgSubmission = () => {
+    let svg = document.querySelector("#defaultCanvas0").getAttribute("data-uri");
+    setUploadPlant(svg)
+    const fd = new FormData();
+    fd.append('upload_preset', "rose_memorial");
+    fd.append('file', svg);
+    fd.append('api_key', cloudinaryKey);
+    fd.append('api_secret', secret);
+    fd.append("multiple", "false");
+
+    fetch('https://api.cloudinary.com/v1_1/rose-memorial/upload',{
+        method: 'POST',
+        body: fd,
+
+      }).then(response => response.json())
+      .then(data => {
+            setUploadPlant(data?.secure_url);
+        })
+        .catch(error => console.error(error));
+      
+  }
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <div className="intro-text medium-text">
@@ -22,18 +52,21 @@ export default function PlantFlower(secret, cloudinaryKey) {
             className="medium-text"
             type="text"
             placeholder="a person"
+            onChange={(e) => { setUploadDedication(e.target.value)}}
           />{" "}
           <br />
           <input
             className="medium-text"
             type="text"
             placeholder="or, a place"
+            onChange={(e) => { setUploadDedicationPlace(e.target.value)}}
           />{" "}
           <br />
           <input
             className="medium-text"
             type="text"
             placeholder="or, a thing"
+            onChange={(e) => { setUploadDedicationThing(e.target.value)}}
           />
         </label>
 
@@ -96,6 +129,7 @@ export default function PlantFlower(secret, cloudinaryKey) {
             Add a reflection<sup>*</sup>
           </span>
           <textarea
+            onChange={(e) => { setUploadNote(e.target.value)}}
             className="medium-text"
             placeholder="How do you want to hold space for yourself and close ones in remembering?
             What are you senses that come back to you in remembering? What do you smell? Taste? Hear? See? Feel?
@@ -104,7 +138,6 @@ export default function PlantFlower(secret, cloudinaryKey) {
             How does their presence continue? "
           />
         </label>
-
         <label>
           <span className="medium-text formlabel">Add a location</span>
           <br />
@@ -112,6 +145,8 @@ export default function PlantFlower(secret, cloudinaryKey) {
             className="medium-text"
             type="text"
             placeholder="e.g. Brooklyn, NY"
+            onChange={(e) => { setUploadLocation(e.target.value)}}
+
           />
         </label>
         <br></br>
@@ -122,13 +157,15 @@ export default function PlantFlower(secret, cloudinaryKey) {
             className="medium-text"
             type="text"
             placeholder="e.g. GoFundMe link"
+            onChange={(e) => { setUploadLink(e.target.value)}}
+
           />
         </label>
 
         <br></br>
         <br></br>
         <button id="submit-button">
-          <span className="medium-text-link"> plant flower</span>
+          <span onClick={()=> {svgSubmission()}} className="medium-text-link"> plant flower</span>
         </button>
       </div>
     </main>
